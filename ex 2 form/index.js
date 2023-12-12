@@ -17,7 +17,7 @@ const validateEmail = (email) => {
 }
 
 const validatePassword = (password) => {
-    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,20}$/;
+    let regex = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$/;
     return regex.test(password);
 }
 
@@ -30,7 +30,7 @@ const checkErrors = () => {
     ageError.style.display = 'none';
     passwordError.style.display = 'none';
 
-    if (userNameInput.value === '') {
+    if (userNameInput.value.trim() === '') {
     userNameError.textContent = 'Введите имя пользователя.';
     userNameError.style.display = 'block';
     hasError = true;
@@ -49,10 +49,11 @@ const checkErrors = () => {
 }
 
     if (validatePassword(passwordInput.value) === false) {
-    passwordError.textContent = 'Длина пароля должна быть не менее 8 символов длиной и содержать как минимум одну заглавную букву, одну строчную букву, одну цифру и один символ';
+    passwordError.textContent = 'Длина пароля должна быть не менее 8 символов длиной и содержать как минимум одну заглавную букву, одну строчную букву, одну цифру';
     passwordError.style.display = 'block';
     hasError = true;
 }
+
     if (passwordInput.value === '') {
     passwordError.textContent = 'Введите пароль.';
     passwordError.style.display = 'block';
